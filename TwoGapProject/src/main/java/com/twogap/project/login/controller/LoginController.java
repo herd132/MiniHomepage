@@ -320,7 +320,7 @@ public class LoginController {
 		if(loginMember == null ) {
 			path = "/";
 		} else {
-			path = "/boards/main";
+			path = "boards/main";
 		}
 		
 		return "redirect:" + path;
@@ -328,7 +328,7 @@ public class LoginController {
 	
 	@GetMapping("personalData")
 	public String personalData() {
-		return "/boards/personalData";
+		return "boards/personalData";
 	}
 	
 

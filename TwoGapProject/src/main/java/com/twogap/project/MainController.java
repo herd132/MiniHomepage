@@ -37,7 +37,7 @@ public class MainController {
 		if(loginMember == null ) {
 			path = "member/login";
 		} else {
-			path = "/boards/main";
+			path = "boards/main";
 		}
 		
 		return path;

@@ -142,7 +142,7 @@ public class MemberController {
 			model.addAttribute("detailAddress",arr[2]);
 		}
 		
-		return "/member/privacyInfo-update";
+		return "member/privacyInfo-update";
 		
 	}
 	
@@ -167,7 +167,7 @@ public class MemberController {
 		}
 		
 		
-		return "redirect:/" + path;
+		return "redirect:" + path;
 	}
 
 }

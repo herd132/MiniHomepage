@@ -46,7 +46,7 @@ public class PhotoController {
 			}
 		}
 		Utility.uid  = uid;
-		return "/boards/photo";
+		return "boards/photo";
 	}
 	
 	@ResponseBody

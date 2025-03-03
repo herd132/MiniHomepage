@@ -79,7 +79,7 @@ public class BoardsController {
 		
 		model.addAttribute("member", member);
 
-		return "/boards/profile-update";
+		return "boards/profile-update";
 	}
 	
 
@@ -149,7 +149,7 @@ public class BoardsController {
 	
 		ra.addFlashAttribute("message", message);
 		
-		return "redirect:/boards/profile-update";
+		return "redirect:boards/profile-update";
 
 	}
 	
@@ -165,8 +165,6 @@ public class BoardsController {
 	public String signOut(@SessionAttribute("loginMember") Member loginMember,
 						SessionStatus status, 
 						RedirectAttributes ra) {
-		
-		log.debug("dls");
 		
 		//int memberNo = inputMember.getMemberNo();
 		int result = service.signOut(loginMember.getMemberNo());

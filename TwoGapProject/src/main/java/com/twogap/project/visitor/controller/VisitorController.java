@@ -41,12 +41,12 @@ public class VisitorController {
 		
 		if( uid != 0 ) {
 			if(uid == loginMember.getMemberNo() || memberService.checkDelFl(uid) == 0 ) {
-				return "redirect:/visitor/main";
+				return "redirect:visitor/main";
 			}
 		}
 		Utility.uid  = uid;
 		
-		return "/boards/visitor";
+		return "boards/visitor";
 	}
 	
 	/** 방명록 
