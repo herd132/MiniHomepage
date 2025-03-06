@@ -109,7 +109,7 @@ sendAuthKeyBtn.addEventListener("click", async e => {
     document.querySelector("#authKeyMessage").innerText = "";
     clearInterval(authTimer);
 
-    inputEmail = emailId.value + '@' + emailDomain.value;
+    inputEmail = emailId.value.trim() + '@' + emailDomain.value.trim();
 
 
     // 3) 입력된 이메일이 없을 경우
@@ -572,11 +572,9 @@ const signUpForm = document.querySelector("#signUpForm");
 const formSection = document.querySelector(".formSection");
 
 formSection.addEventListener("submit", e => {
-
+    
     for(let key in checkObj) {
-
         if(!checkObj[key]) {
-            console.log(key);
             alert("필수 입력 칸을 모두 입력해주세요!");
             e.preventDefault(); // 클릭 이벤트 중단
             document.getElementById(key).focus(); // 초점 이동

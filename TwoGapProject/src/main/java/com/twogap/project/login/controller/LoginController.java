@@ -143,7 +143,6 @@ public class LoginController {
 		// 회원가입 서비스 호출
 		int result = service.submit(inputMember, memberAdress, memberTel, memberHomeTel, memberEmail, personalCode); // 데이터 가공 
 
-		
 		String path = null;
 		String message = null;
 		

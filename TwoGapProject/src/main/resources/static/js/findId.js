@@ -116,9 +116,10 @@ sendAuthKeyBtn.addEventListener("click", async e => {
     } else { 
         // 이메일이 없을 경우
         emailMessage.innerText = "존재하지 않는 이메일입니다.";
-        emailMessage.classList.add("confirm");
-        emailMessage.classList.remove("error");
+        emailMessage.classList.add("error");
+        emailMessage.classList.remove("confirm");
         checkObj.memberEmail = false; 
+        console.log(inputEmail);
         return;
          
 
