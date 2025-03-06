@@ -81,9 +81,9 @@ public class LoginController {
 	 * @return
 	 * @author 우수민
 	 */
-	@GetMapping("signup")
+	@GetMapping("signUp")
 	public String signUpPage() {
-		return "member/signup";
+		return "member/signUp";
 		
 	}
 	
