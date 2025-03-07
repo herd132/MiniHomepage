@@ -344,7 +344,7 @@ write.addEventListener("click", () => {
   inputPhoto.type = "file";
   inputPhoto.accept = "image/*"; // 이미지 파일만 선택 가능
   inputPhoto.id = "photo-upload-input";
-  inputPhoto.multiple = true;
+  inputPhoto.multiple = false;
   label.appendChild(inputPhoto);
   label.classList.add("btnLabel");
 
@@ -426,6 +426,13 @@ write.addEventListener("click", () => {
   });
 
   checkBtn.addEventListener("click", () => {
+    const photoWriteTitle = document.querySelector(".photo-write-title").value;
+    // 제목이 비어 있으면 알림창 띄우기
+    if (photoWriteTitle.trim() === "") {
+      alert("제목을 입력해 주세요");
+      return;
+    }
+
     if (inputPhoto.files.length === 0) {
       alert("사진을 넣어 주세요");
       return;

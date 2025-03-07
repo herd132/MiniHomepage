@@ -97,7 +97,6 @@ public class LoginServiceImpl implements LoginService {
 		if(!inputMember.getMemberEmail().equals(",")) {
 			String email = String.join("@", memberEmail);
 			email = email.substring(0, email.length() - 1);
-			log.debug("이메일은 : ? " + email);
 			inputMember.setMemberEmail(email);
 			
 		} else {

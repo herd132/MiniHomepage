@@ -32,7 +32,7 @@
 		<foreach collection="list" item="img" open="(" close=")"
 			separator=" UNION ">
 			SELECT
-			NEXT_IMG_NO(),
+			IMG_SEQ.NEXTVAL,
 			#{img.imgPath},
 			#{img.imgOriginalName},
 			#{img.imgRename},

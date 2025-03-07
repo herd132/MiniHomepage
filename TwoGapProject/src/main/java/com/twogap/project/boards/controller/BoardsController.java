@@ -149,7 +149,7 @@ public class BoardsController {
 	
 		ra.addFlashAttribute("message", message);
 		
-		return "redirect:boards/profile-update";
+		return "redirect:/boards/profile-update";
 
 	}
 	

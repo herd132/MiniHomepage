@@ -307,7 +307,7 @@ const memberTel = document.querySelector("#memberTel1").value + '-' +
 const memberHomeTel = document.querySelector("#memberHomeTel1").value + '-' +
                     document.querySelector("#memberHomeTel2").value + '-' +
                     document.querySelector("#memberHomeTel3").value;
-const memberAdress = document.querySelector("#postcode").value + '-' +
+const memberAddress = document.querySelector("#postcode").value + '-' +
                     document.querySelector("#address").value + '-' +
                     document.querySelector("#detailAddress").value;
 
@@ -324,7 +324,7 @@ formSection.addEventListener("submit", e => {
   const inputHomeTel = document.querySelector("#memberHomeTel1").value + '-' +
                     document.querySelector("#memberHomeTel2").value + '-' +
                     document.querySelector("#memberHomeTel3").value;
-  const memberAdress = document.querySelector("#postcode").value + '-' +
+  const inputAddress = document.querySelector("#postcode").value + '-' +
                     document.querySelector("#address").value + '-' +
                     document.querySelector("#detailAddress").value;
 
@@ -342,10 +342,10 @@ formSection.addEventListener("submit", e => {
     }
     submit =1;
   }
-
+  
   if(inputTel != memberTel) submit = 1;
   if(inputHomeTel != memberHomeTel) submit = 1;
-  if(memberAdress != memberAdress) submit = 1;
+  if(inputAddress != memberAddress) submit = 1;
   
   // 변경 점 없을 시 이벤트 막기
   if( submit == 0 ) {

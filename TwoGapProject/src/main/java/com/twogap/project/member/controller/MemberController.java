@@ -99,48 +99,50 @@ public class MemberController {
 							Model model) {
 		
 		// 이메일 나누기
-		if(loginMember.getMemberEmail() != null) {
-			String[] arr = loginMember.getMemberEmail().split("@"); 
-			
-			model.addAttribute("emailId",arr[0]);
-			model.addAttribute("emailDomain",arr[1]);
+		if (loginMember.getMemberEmail() != null && loginMember.getMemberEmail().contains("@")) {
+		    String[] arr = loginMember.getMemberEmail().split("@");
+		    model.addAttribute("emailId", arr[0]);
+		    model.addAttribute("emailDomain", arr[1]);
+		} else {
+		    // 이메일 형식이 잘못됨 처리
 		}
 
-		
 		// 핸드폰 번호 나누기
-		if(loginMember.getMemberTel() != null) {
-			String[] arr = loginMember.getMemberTel().split("-"); 
-			
-			model.addAttribute("memberTel1",arr[0]);
-			model.addAttribute("memberTel2",arr[1]);
-			model.addAttribute("memberTel3",arr[2]);
+		if (loginMember.getMemberTel() != null && loginMember.getMemberTel().contains("-")) {
+		    String[] arr = loginMember.getMemberTel().split("-");
+		    if (arr.length == 3) {
+		        model.addAttribute("memberTel1", arr[0]);
+		        model.addAttribute("memberTel2", arr[1]);
+		        model.addAttribute("memberTel3", arr[2]);
+		    } else {
+		        // 전화번호 형식이 잘못됨 처리
+		    }
 		}
 
 		// 집 전화번호 나누기
-		if(loginMember.getMemberHomeTel() != null) {
-			String[] arr = loginMember.getMemberHomeTel().split("-");
-			
-			model.addAttribute("memberHomeTel1",arr[0]);
-			model.addAttribute("memberHomeTel2",arr[1]);
-			model.addAttribute("memberHomeTel3",arr[2]);
+		if (loginMember.getMemberHomeTel() != null && loginMember.getMemberHomeTel().contains("-")) {
+		    String[] arr = loginMember.getMemberHomeTel().split("-");
+		    if (arr.length == 3) {
+		        model.addAttribute("memberHomeTel1", arr[0]);
+		        model.addAttribute("memberHomeTel2", arr[1]);
+		        model.addAttribute("memberHomeTel3", arr[2]);
+		    } else {
+		        // 전화번호 형식이 잘못됨 처리
+		    }
 		}
 
 		// 주소 나누기
-		if(loginMember.getMemberAdress() != null) {
-			
-			// 구분자 "^^^" 를 기준으로 
-			// memberAddress 값을 쪼개어 String[]로 반환
-			String[] arr = new String[3];
-			String[] resutlArr = loginMember.getMemberAdress().split("\\^\\^\\^");
-			
-			for(int i = 0 ; i < resutlArr.length ; i ++) {
-				arr[i] = resutlArr[i];
-			}
-			
-			model.addAttribute("postcode",arr[0]);
-			model.addAttribute("address",arr[1]);
-			model.addAttribute("detailAddress",arr[2]);
+		if (loginMember.getMemberAdress() != null && loginMember.getMemberAdress().contains("^^^")) {
+		    String[] resultArr = loginMember.getMemberAdress().split("\\^\\^\\^");
+		    if (resultArr.length == 3) {
+		        model.addAttribute("postcode", resultArr[0]);
+		        model.addAttribute("address", resultArr[1]);
+		        model.addAttribute("detailAddress", resultArr[2]);
+		    } else {
+		        // 주소 형식이 잘못됨 처리
+		    }
 		}
+
 		
 		return "member/privacyInfo-update";
 		
@@ -155,17 +157,17 @@ public class MemberController {
 									@SessionAttribute("loginMember") Member loginMember,
 									RedirectAttributes ra) {
 		String path = null;
-		String mesaage = null;
+		String message = null;
 		int result = service.privacyInfoUpdate(inputMember, memberAddress, memberTel, memberHomeTel, memberEmail, loginMember);
 		
 		if( result > 0 ) {
-			mesaage = "개인정보 변경 성공";
-			path = "boards/main";
+			message = "개인정보 변경 성공";
+			path = "/boards/main";
 		} else {
-			mesaage = "개인정보 변경 실패";
+			message = "개인정보 변경 실패";
 			path = "member/privacyInfoUpdate";
 		}
-		
+		ra.addFlashAttribute("message", message);  
 		
 		return "redirect:" + path;
 	}
