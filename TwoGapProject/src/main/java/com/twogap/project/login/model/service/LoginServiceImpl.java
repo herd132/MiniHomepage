@@ -94,16 +94,19 @@ public class LoginServiceImpl implements LoginService {
 		}
 		
 		// 이메일
-		if(!inputMember.getMemberEmail().equals(",")) {
-			String email = String.join("@", memberEmail);
-			email = email.substring(0, email.length() - 1);
-			inputMember.setMemberEmail(email);
-			
+		if (!inputMember.getMemberEmail().equals(",")) {
+		    String email = String.join("@", memberEmail);
+		    
+		    // 이메일의 마지막 문자가 '@'인 경우에만 마지막 문자를 자른다
+		    if (email.charAt(email.length() - 1) == '@') {
+		        email = email.substring(0, email.length() - 1);
+		    }
+		    
+		    inputMember.setMemberEmail(email);
 		} else {
-			
-			inputMember.setMemberEmail(null);
-			
+		    inputMember.setMemberEmail(null);
 		}
+
 		
 		// 주민등록번호
 		if(!inputMember.getPersonalCode().equals(",")) {

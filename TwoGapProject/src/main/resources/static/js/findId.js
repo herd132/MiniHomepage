@@ -3,6 +3,8 @@ const checkObj = {
   "authKey": false
 };
 
+const formSection = document.querySelector(".formSection");
+
 
 // 인증번호 받기 버튼
 const sendAuthKeyBtn = document.querySelector("#sendAuthKeyBtn");
@@ -259,3 +261,21 @@ checkAuthKeyBtn.addEventListener("click", () => {
     });
 
 });
+
+formSection.addEventListener("submit", e => {
+    let submit = 0;
+  
+    
+    if(checkObj.authKey == false && checkObj.memberEmail == false) {
+    alert("이메일 인증을 진행해 주시기 바랍니다.");
+    e.preventDefault(); // 클릭 이벤트 중단
+    return; 
+    }
+    submit =1;
+    
+    // 변경 점 없을 시 이벤트 막기
+    if( submit == 0 ) {
+      alert("이메일 인증을 진행해 주시기 바랍니다");
+      e.preventDefault(); // 변경 이벤트 중단
+    }
+  });
